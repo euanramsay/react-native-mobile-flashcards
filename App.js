@@ -1,13 +1,19 @@
 import React from 'react'
-import { StyleSheet, Text, View, Platform } from 'react-native'
-import { createBottomTabNavigator } from 'react-navigation'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import {
+  createBottomTabNavigator,
+  createStackNavigator
+} from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
 
-function Home () {
+function Home ({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>HOME</Text>
       <Ionicons name={'ios-home'} size={100} />
+      <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+        <Text>Press here for the Dashboard</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -28,33 +34,83 @@ function Settings () {
   )
 }
 
-const Tabs = createBottomTabNavigator({
+const Tabs = createBottomTabNavigator(
+  {
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        tabBarLabel: 'Home',
+        tabBarIcon: <Ionicons name='ios-home' size={30} />
+      }
+    },
+    CreateQuiz: {
+      screen: CreateQuiz,
+      navigationOptions: {
+        title: 'Add Quiz',
+        tabBarLabel: 'Add Quiz',
+        tabBarIcon: <Ionicons name='ios-add-circle-outline' size={30} />
+      }
+    },
+    Settings: {
+      screen: Settings,
+      navigationOptions: {
+        title: 'Notifications',
+        tabBarLabel: 'Notifications',
+        tabBarIcon: <Ionicons name='ios-alarm' size={30} />
+      }
+    }
+  },
+  {
+    navigationOptions: {
+      header: null
+    },
+    swipeEnabled: true,
+    animationEnabled: true,
+    tabBarOptions: {
+      activeTintColor: '#f44286',
+      style: {
+        height: 56,
+        backgroundColor: '#f4d941',
+        shadowColor: '#a39089',
+        shadowOffset: {
+          width: 0,
+          height: 3
+        },
+        shadowRadius: 6,
+        shadowOpacity: 1
+      }
+    }
+  }
+)
+
+const Dashboard = () => (
+  <View>
+    <Text>This is the Dashboard!</Text>
+  </View>
+)
+
+const MainNavigator = createStackNavigator({
   Home: {
-    screen: Home,
+    screen: Tabs,
     navigationOptions: {
-      tabBarLabel: 'Home',
-      tabBarIcon: <Ionicons name='ios-home' size={30} />
+      title: 'Home'
     }
   },
-  CreateQuiz: {
-    screen: CreateQuiz,
+  Dashboard: {
+    screen: Dashboard,
     navigationOptions: {
-      tabBarLabel: 'Add Quiz',
-      tabBarIcon: <Ionicons name='ios-add-circle-outline' size={30} />
-    }
-  },
-  Settings: {
-    screen: Settings,
-    navigationOptions: {
-      tabBarLabel: 'Notifications',
-      tabBarIcon: <Ionicons name='ios-alarm' size={30} />
+      title: 'Dashboard'
     }
   }
 })
 
 export default class App extends React.Component {
   render () {
-    return <Tabs />
+    return (
+      <View style={{ flex: 1 }}>
+        <MainNavigator />
+      </View>
+    )
   }
 }
 

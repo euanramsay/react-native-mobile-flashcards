@@ -1,11 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Platform } from 'react-native'
 import { createBottomTabNavigator } from 'react-navigation'
+import { Ionicons } from '@expo/vector-icons'
 
 function Home () {
   return (
     <View style={styles.container}>
       <Text>HOME</Text>
+      <Ionicons name={'ios-home'} size={100} />
     </View>
   )
 }
@@ -28,13 +30,25 @@ function Settings () {
 
 const Tabs = createBottomTabNavigator({
   Home: {
-    screen: Home
+    screen: Home,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+      tabBarIcon: <Ionicons name='ios-home' size={30} />
+    }
   },
   CreateQuiz: {
-    screen: CreateQuiz
+    screen: CreateQuiz,
+    navigationOptions: {
+      tabBarLabel: 'Add Quiz',
+      tabBarIcon: <Ionicons name='ios-add-circle-outline' size={30} />
+    }
   },
   Settings: {
-    screen: Settings
+    screen: Settings,
+    navigationOptions: {
+      tabBarLabel: 'Notifications',
+      tabBarIcon: <Ionicons name='ios-alarm' size={30} />
+    }
   }
 })
 

@@ -5,6 +5,7 @@ import {
   createStackNavigator
 } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
+import Notifications from './components/Notifications'
 
 function Home ({ navigation }) {
   return (
@@ -30,6 +31,7 @@ function Settings () {
   return (
     <View style={styles.container}>
       <Text>SETTINGS</Text>
+      <Notifications />
     </View>
   )
 }

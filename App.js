@@ -1,11 +1,21 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity
+} from 'react-native'
 import {
   createBottomTabNavigator,
   createStackNavigator
 } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
 import Notifications from './components/Notifications'
+import { setLocalNotification } from './utils/helpers'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import middleware from './middleware'
+import reducer from './reducers'
 
 function Home ({ navigation }) {
   return (
@@ -106,12 +116,19 @@ const MainNavigator = createStackNavigator({
   }
 })
 
+const store = createStore(reducer, middleware)
+
 export default class App extends React.Component {
+  componentDidMount () {
+    setLocalNotification()
+  }
   render () {
     return (
-      <View style={{ flex: 1 }}>
-        <MainNavigator />
-      </View>
+      <Provider store={store}>
+        <View style={{ flex: 1 }}>
+          <MainNavigator />
+        </View>
+      </Provider>
     )
   }
 }

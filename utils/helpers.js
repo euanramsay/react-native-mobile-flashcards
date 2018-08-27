@@ -3,21 +3,17 @@ import { Notifications, Permissions } from 'expo'
 
 const NOTIFICATION_KEY = 'mobileFlashCards:notifications'
 
-/**
- * Accreditation: code taken from Udacity React Native 'UdaciFitness' lessons
- */
+// Reference: Udacity React Native Lesson 5
+
 export function clearLocalNotification () {
   return AsyncStorage.removeItem(NOTIFICATION_KEY).then(
     Notifications.cancelAllScheduledNotificationsAsync
   )
 }
 
-/**
- * Accreditation: code taken from Udacity React Native 'UdaciFitness' lessons
- */
 function createNotification () {
   return {
-    title: 'Take a quiz!',
+    title: 'Quiz!',
     body: "👋 don't forget to take a quiz today!",
     ios: {
       sound: true
@@ -25,9 +21,6 @@ function createNotification () {
   }
 }
 
-/**
- * Accreditation: code adapted from Udacity React Native 'UdaciFitness' lessons
- */
 export function setLocalNotification (chosenTime) {
   AsyncStorage.getItem(NOTIFICATION_KEY).then(JSON.parse).then(data => {
     if (data === null) {

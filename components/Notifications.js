@@ -42,15 +42,25 @@ class Notifications extends Component {
         padding: 10,
         alignItems: 'center'
       },
-      clickable: {
+      confirm: {
         padding: 10,
         margin: 5,
-        backgroundColor: '#8cffcd'
+        backgroundColor: '#8cffcd',
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#d3d3d3'
+      },
+      cancel: {
+        padding: 10,
+        margin: 5,
+        backgroundColor: '#ff99ab',
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#d3d3d3'
       },
       heading: {
         padding: 30,
-        fontSize: 20,
-        fontWeight: 'bold'
+        fontSize: 20
       }
     })
 
@@ -66,7 +76,7 @@ class Notifications extends Component {
         />
         <View style={styles.centre}>
           <TouchableOpacity
-            style={styles.clickable}
+            style={styles.confirm}
             onPress={() =>
               clearLocalNotification()
                 .then(setLocalNotification(chosenTime))
@@ -75,7 +85,7 @@ class Notifications extends Component {
             <Text>Set notification</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.clickable}
+            style={styles.cancel}
             onPress={() =>
               clearLocalNotification().then(
                 displayConfirmNotificationAlert('cancelled.')

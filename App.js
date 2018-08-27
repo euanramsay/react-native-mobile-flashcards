@@ -151,7 +151,10 @@ const styles = StyleSheet.create({
   },
   clickable: {
     padding: 10,
-    backgroundColor: '#8cffcd'
+    backgroundColor: '#8cffcd',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#d3d3d3'
   },
   heading: {
     padding: 30,

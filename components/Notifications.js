@@ -4,17 +4,10 @@ import {
   DatePickerIOS,
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  StyleSheet
 } from 'react-native'
-import styled from 'styled-components'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
-
-const ExplanationText = styled.Text`
-  font-size: 20;
-  text-align: center;
-  padding-top: 10;
-  padding-horizontal: 15;
-`
 
 class Notifications extends Component {
   constructor (props) {
@@ -40,30 +33,57 @@ class Notifications extends Component {
 
     const { chosenTime } = this.state
 
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: 'center'
+      },
+      centre: {
+        padding: 10,
+        alignItems: 'center'
+      },
+      clickable: {
+        padding: 10,
+        margin: 5,
+        backgroundColor: '#8cffcd'
+      },
+      heading: {
+        padding: 30,
+        fontSize: 20,
+        fontWeight: 'bold'
+      }
+    })
+
     return (
-      <View>
-        <ExplanationText>Set a daily reminder</ExplanationText>
+      <View style={styles.container}>
+        <View style={styles.centre}>
+          <Text style={styles.heading}>Set a daily reminder</Text>
+        </View>
         <DatePickerIOS
           date={chosenTime}
           onDateChange={this.setTime}
           mode='time'
         />
-        <TouchableOpacity
-          onPress={() =>
-            clearLocalNotification()
-              .then(setLocalNotification(chosenTime))
-              .then(displayConfirmNotificationAlert('activated.'))}
-        >
-          <Text>Set notifications</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() =>
-            clearLocalNotification().then(
-              displayConfirmNotificationAlert('cancelled.')
-            )}
-        >
-          <Text>Reset notifications</Text>
-        </TouchableOpacity>
+        <View style={styles.centre}>
+          <TouchableOpacity
+            style={styles.clickable}
+            onPress={() =>
+              clearLocalNotification()
+                .then(setLocalNotification(chosenTime))
+                .then(displayConfirmNotificationAlert('activated.'))}
+          >
+            <Text>Set notification</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.clickable}
+            onPress={() =>
+              clearLocalNotification().then(
+                displayConfirmNotificationAlert('cancelled.')
+              )}
+          >
+            <Text>Cancel notification</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }

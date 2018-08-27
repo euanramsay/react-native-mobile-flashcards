@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity
-} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import {
   createBottomTabNavigator,
   createStackNavigator
@@ -22,7 +17,10 @@ function Home ({ navigation }) {
     <View style={styles.container}>
       <Text>HOME</Text>
       <Ionicons name={'ios-home'} size={100} />
-      <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+      <TouchableOpacity
+        style={styles.clickable}
+        onPress={() => navigation.navigate('Dashboard')}
+      >
         <Text>Press here for the Dashboard</Text>
       </TouchableOpacity>
     </View>
@@ -37,11 +35,16 @@ function CreateQuiz () {
   )
 }
 
-function Settings () {
+function Settings ({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>SETTINGS</Text>
-      <Notifications />
+      <Text style={styles.heading}>Settings</Text>
+      <TouchableOpacity
+        style={styles.clickable}
+        onPress={() => navigation.navigate('Notifications')}
+      >
+        <Text>Press here for Notifications</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -113,6 +116,12 @@ const MainNavigator = createStackNavigator({
     navigationOptions: {
       title: 'Dashboard'
     }
+  },
+  Notifications: {
+    screen: Notifications,
+    navigationOptions: {
+      title: 'Notifications'
+    }
   }
 })
 
@@ -139,5 +148,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#4286f4',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  clickable: {
+    padding: 10,
+    backgroundColor: '#8cffcd'
+  },
+  heading: {
+    padding: 30,
+    fontSize: 20,
+    fontWeight: 'bold'
   }
 })

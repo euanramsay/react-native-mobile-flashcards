@@ -8,7 +8,7 @@ import {
   StyleSheet
 } from 'react-native'
 import { connect } from 'react-redux'
-import { addNewDeck } from '../actions/card'
+import { addNewSet } from '../actions/card'
 
 class NewSet extends Component {
   state = {
@@ -24,12 +24,11 @@ class NewSet extends Component {
       )
     }
     const { title } = this.state
-    this.props.addNewDeck(value)
+    this.props.addNewSet(value)
     this.props.navigation.navigate('NewCard', { title })
   }
 
   render () {
-    console.log(this.props)
     return (
       <View>
         <Text>What do you want to call you new question set?</Text>
@@ -79,4 +78,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect(null, { addNewDeck })(NewSet)
+export default connect(null, { addNewSet })(NewSet)

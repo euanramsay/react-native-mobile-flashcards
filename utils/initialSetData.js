@@ -1,4 +1,4 @@
-export const initialDeckData = {
+export const initialSetData = {
   React: {
     title: 'React',
     questions: [

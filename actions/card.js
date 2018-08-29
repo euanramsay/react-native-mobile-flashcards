@@ -5,7 +5,7 @@ export const addNewCard = value => ({
   value
 })
 
-export const addNewDeck = value => ({
+export const addNewSet = value => ({
   type: ADD_NEW_DECK,
   value
 })

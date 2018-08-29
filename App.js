@@ -125,7 +125,7 @@ const MainNavigator = createStackNavigator({
   NewSet: {
     screen: NewSet,
     navigationOptions: {
-      title: 'Add New Question Set'
+      title: 'Add New'
     }
   },
   NewCard: {

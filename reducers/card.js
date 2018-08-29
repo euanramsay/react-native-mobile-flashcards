@@ -1,8 +1,8 @@
 import { ADD_NEW_CARD, ADD_NEW_DECK } from '../actions/types'
-import { initialDeckData } from '../utils/initialDeckData'
+import { initialSetData } from '../utils/initialSetData'
 
 
-const card = (state = initialDeckData, action) => {
+const card = (state = initialSetData, action) => {
   switch (action.type) {
     case ADD_NEW_CARD:
       return {

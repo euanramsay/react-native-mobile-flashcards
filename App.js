@@ -11,12 +11,13 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import middleware from './middleware'
 import reducer from './reducers'
+import NewSet from './components/NewSet'
+import NewCard from './components/NewCard'
 
 function Home ({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>HOME</Text>
-      <Ionicons name={'ios-home'} size={100} />
+      <Text>Mobile Flashcards!</Text>
       <TouchableOpacity
         style={styles.clickable}
         onPress={() => navigation.navigate('Dashboard')}
@@ -27,10 +28,16 @@ function Home ({ navigation }) {
   )
 }
 
-function CreateQuiz () {
+function CreateQuiz ({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>CREATE QUIZ</Text>
+      <Text style={styles.heading}>Create a new Quiz</Text>
+      <TouchableOpacity
+        style={styles.clickable}
+        onPress={() => navigation.navigate('NewSet')}
+      >
+        <Text>Press here to create new quiz</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -82,17 +89,9 @@ const Tabs = createBottomTabNavigator(
     swipeEnabled: true,
     animationEnabled: true,
     tabBarOptions: {
-      activeTintColor: '#f44286',
       style: {
         height: 56,
-        backgroundColor: '#f4d941',
-        shadowColor: '#a39089',
-        shadowOffset: {
-          width: 0,
-          height: 3
-        },
-        shadowRadius: 6,
-        shadowOpacity: 1
+        backgroundColor: '#f4d941'
       }
     }
   }
@@ -122,6 +121,18 @@ const MainNavigator = createStackNavigator({
     navigationOptions: {
       title: 'Notifications'
     }
+  },
+  NewSet: {
+    screen: NewSet,
+    navigationOptions: {
+      title: 'Add New Question Set'
+    }
+  },
+  NewCard: {
+    screen: NewCard,
+    navigationOptions: {
+      title: 'New Questions'
+    }
   }
 })
 
@@ -132,6 +143,8 @@ export default class App extends React.Component {
     setLocalNotification()
   }
   render () {
+    console.log(store.getState())
+
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>

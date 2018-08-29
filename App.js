@@ -13,11 +13,13 @@ import middleware from './middleware'
 import reducer from './reducers'
 import NewSet from './components/NewSet'
 import NewCard from './components/NewCard'
+import Quiz from './components/Quiz'
 
 function Home ({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Mobile Flashcards!</Text>
+      <Text style={styles.heading}>Mobile Flashcards!</Text>
+      <Ionicons name='ios-albums' size={50} />
       <TouchableOpacity
         style={styles.clickable}
         onPress={() => navigation.navigate('Dashboard')}
@@ -133,6 +135,12 @@ const MainNavigator = createStackNavigator({
     navigationOptions: {
       title: 'New Questions'
     }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      title: 'Quiz'
+    }
   }
 })
 
@@ -143,8 +151,6 @@ export default class App extends React.Component {
     setLocalNotification()
   }
   render () {
-    console.log(store.getState())
-
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
@@ -164,10 +170,13 @@ const styles = StyleSheet.create({
   },
   clickable: {
     padding: 10,
+    margin: 10,
     backgroundColor: '#8cffcd',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#d3d3d3'
+    borderColor: '#d3d3d3',
+    minWidth: 200,
+    alignItems: 'center'
   },
   heading: {
     padding: 30,

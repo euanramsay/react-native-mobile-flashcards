@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
   Alert,
-  View,
+  KeyboardAvoidingView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -46,9 +46,8 @@ class NewCard extends Component {
   }
 
   render () {
-    console.log(this.props)
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior='padding' enabled>
         <Text>Please add a question...</Text>
         <TextInput
           style={styles.input}
@@ -67,7 +66,7 @@ class NewCard extends Component {
         >
           <Text>Submit</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -85,7 +84,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#8cffcd',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#d3d3d3'
+    borderColor: '#d3d3d3',
+    minWidth: 200,
+    alignItems: 'center'
   },
   heading: {
     padding: 30,

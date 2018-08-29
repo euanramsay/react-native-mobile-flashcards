@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
   Alert,
-  View,
+  KeyboardAvoidingView,
   TextInput,
   Text,
   TouchableOpacity,
@@ -25,13 +25,13 @@ class NewSet extends Component {
     }
     const { title } = this.state
     this.props.addNewSet(value)
-    this.props.navigation.navigate('NewCard', { title })
+    this.props.navigation.navigate('Quiz', { title })
   }
 
   render () {
     return (
-      <View>
-        <Text>What do you want to call you new question set?</Text>
+      <KeyboardAvoidingView style={styles.container} behavior='padding' enabled>
+        <Text>What is the title of your new question set?</Text>
         <TextInput
           style={styles.input}
           onChangeText={title => this.setState({ title })}
@@ -42,7 +42,7 @@ class NewSet extends Component {
         >
           <Text>Submit</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#8cffcd',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#d3d3d3'
+    borderColor: '#d3d3d3',
+    minWidth: 200,
+    alignItems: 'center'
   },
   heading: {
     padding: 30,

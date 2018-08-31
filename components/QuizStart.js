@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-  View,
-  Text,
-} from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { styles } from '../utils/styles'
 
-const QuizStart = props => {
-  const { title, questions } = props.navigation.state.params
-  console.log(props)
-  return (
-    <View style={styles.container}>
-    
-      <Text>Quiz will go here</Text>
-    </View>
-  )
+class QuizStart extends Component {
+  state = {
+    score: 0,
+    questionNumber: 0
+  }
+
+  render () {
+    const { title, questions } = this.props.navigation.state.params
+    const { questionNumber } = this.state
+    return (
+      <View style={styles.container}>
+        <Text style={styles.heading}>{title}</Text>
+        <Text>{questions[questionNumber].question}</Text>
+        <TouchableOpacity style={styles.clickable} onPress={() => null}>
+          <Text>Answer</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
 }
 
 export default connect()(QuizStart)

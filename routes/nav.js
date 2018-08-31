@@ -48,7 +48,7 @@ export const Tabs = createBottomTabNavigator(
     tabBarOptions: {
       style: {
         height: 56,
-        backgroundColor: '#f4d941'
+        backgroundColor: '#fce697'
       }
     }
   }

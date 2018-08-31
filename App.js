@@ -12,7 +12,7 @@ import { Provider } from 'react-redux'
 import middleware from './middleware'
 import reducer from './reducers'
 import NewSet from './components/NewSet'
-import NewCard from './components/NewCard'
+import NewQuestion from './components/NewQuestion'
 import Quiz from './components/Quiz'
 
 function Home ({ navigation }) {
@@ -130,8 +130,8 @@ const MainNavigator = createStackNavigator({
       title: 'Add New'
     }
   },
-  NewCard: {
-    screen: NewCard,
+  NewQuestion: {
+    screen: NewQuestion,
     navigationOptions: {
       title: 'New Questions'
     }

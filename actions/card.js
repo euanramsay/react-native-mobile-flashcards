@@ -1,11 +1,11 @@
-import { ADD_NEW_CARD, ADD_NEW_DECK } from './types'
+import { ADD_NEW_QUESTION, ADD_NEW_SET } from './types'
 
-export const addNewCard = value => ({
-  type: ADD_NEW_CARD,
+export const addNewQuestion = value => ({
+  type: ADD_NEW_QUESTION,
   value
 })
 
 export const addNewSet = value => ({
-  type: ADD_NEW_DECK,
+  type: ADD_NEW_SET,
   value
 })

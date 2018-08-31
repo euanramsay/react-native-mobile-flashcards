@@ -4,10 +4,10 @@ import {
   DatePickerIOS,
   View,
   Text,
-  TouchableOpacity,
-  StyleSheet
+  TouchableOpacity
 } from 'react-native'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
+import { styles } from '../utils/styles'
 
 class Notifications extends Component {
   constructor (props) {
@@ -32,37 +32,6 @@ class Notifications extends Component {
     }
 
     const { chosenTime } = this.state
-
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        justifyContent: 'center'
-      },
-      centre: {
-        padding: 10,
-        alignItems: 'center'
-      },
-      confirm: {
-        padding: 10,
-        margin: 5,
-        backgroundColor: '#8cffcd',
-        borderRadius: 10,
-        borderWidth: 1,
-        borderColor: '#d3d3d3'
-      },
-      cancel: {
-        padding: 10,
-        margin: 5,
-        backgroundColor: '#ff99ab',
-        borderRadius: 10,
-        borderWidth: 1,
-        borderColor: '#d3d3d3'
-      },
-      heading: {
-        padding: 30,
-        fontSize: 20
-      }
-    })
 
     return (
       <View style={styles.container}>

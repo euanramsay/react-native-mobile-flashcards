@@ -4,13 +4,13 @@ import {
   KeyboardAvoidingView,
   Text,
   TextInput,
-  TouchableOpacity,
-  StyleSheet
+  TouchableOpacity
 } from 'react-native'
 import { connect } from 'react-redux'
-import { addNewCard } from '../actions/card'
+import { addNewQuestion } from '../actions/card'
+import { styles } from '../utils/styles'
 
-class NewCard extends Component {
+class NewQuestion extends Component {
   state = {
     question: '',
     answer: ''
@@ -41,7 +41,7 @@ class NewCard extends Component {
       question,
       answer
     }
-    this.props.addNewCard(value)
+    this.props.addNewQuestion(value)
     this.props.navigation.goBack()
   }
 
@@ -71,37 +71,4 @@ class NewCard extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#4286f4',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  clickable: {
-    padding: 10,
-    margin: 10,
-    backgroundColor: '#8cffcd',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#d3d3d3',
-    minWidth: 200,
-    alignItems: 'center'
-  },
-  heading: {
-    padding: 30,
-    fontSize: 20,
-    fontWeight: 'bold'
-  },
-  input: {
-    padding: 10,
-    margin: 10,
-    height: 50,
-    minWidth: 250,
-    backgroundColor: '#dbfdff',
-    borderWidth: 1,
-    borderColor: '#0f0f0f'
-  }
-})
-
-export default connect(null, { addNewCard })(NewCard)
+export default connect(null, { addNewQuestion })(NewQuestion)

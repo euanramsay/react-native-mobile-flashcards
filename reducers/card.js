@@ -1,10 +1,10 @@
-import { ADD_NEW_CARD, ADD_NEW_DECK } from '../actions/types'
+import { ADD_NEW_QUESTION, ADD_NEW_SET } from '../actions/types'
 import { initialSetData } from '../utils/initialSetData'
 
 
 const card = (state = initialSetData, action) => {
   switch (action.type) {
-    case ADD_NEW_CARD:
+    case ADD_NEW_QUESTION:
       return {
         ...state,
         [action.value.title]: {
@@ -19,7 +19,7 @@ const card = (state = initialSetData, action) => {
           ]
         }
       }
-    case ADD_NEW_DECK:
+    case ADD_NEW_SET:
       return {
         ...state,
         [action.value.title]: {

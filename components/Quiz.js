@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import {
   View,
   Text,
-  TouchableOpacity,
-  StyleSheet
+  TouchableOpacity
 } from 'react-native'
+import { styles } from '../utils/styles'
 
 const Quiz = props => {
   const { title, questions } = props.navigation.state.params
@@ -27,7 +27,7 @@ const Quiz = props => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.clickable}
-        onPress={() => props.navigation.navigate('NewCard', { title })}
+        onPress={() => props.navigation.navigate('NewQuestion', { title })}
       >
         <Text>Add new question</Text>
       </TouchableOpacity>
@@ -40,30 +40,6 @@ const Quiz = props => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#4286f4',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  clickable: {
-    padding: 10,
-    margin: 10,
-    backgroundColor: '#8cffcd',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#d3d3d3',
-    minWidth: 200,
-    alignItems: 'center'
-  },
-  heading: {
-    padding: 30,
-    fontSize: 20,
-    fontWeight: 'bold'
-  }
-})
 
 const mapStateToProps = (state, ownProps) => ({
   quizLength: state.card[ownProps.navigation.state.params.title].quizLength

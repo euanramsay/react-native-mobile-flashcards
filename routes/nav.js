@@ -88,7 +88,7 @@ export const MainNavigator = createStackNavigator({
   QuizStart: {
     screen: QuizStart,
     navigationOptions: {
-      title: 'QuizStart'
+      title: 'Answer Quiz'
     }
   }
 })

@@ -9,13 +9,14 @@ class QuizStart extends Component {
     questionNumber: 0
   }
 
+  // TODO: Implement answering of questions and scoring.
+
   render () {
     const { title, questions } = this.props.navigation.state.params
     const { questionNumber } = this.state
     return (
       <View style={styles.container}>
-        <Text style={styles.heading}>{title}</Text>
-        <Text>{questions[questionNumber].question}</Text>
+        <Text style={styles.heading}>{questions[questionNumber].question}</Text>
         <TouchableOpacity style={styles.clickable} onPress={() => null}>
           <Text>Answer</Text>
         </TouchableOpacity>

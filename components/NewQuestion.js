@@ -20,6 +20,7 @@ class NewQuestion extends Component {
     const { question, answer } = this.state
     const { title } = this.props.navigation.state.params
 
+
     if (question.length < 1) {
       return Alert.alert(
         'You need to put a question.',

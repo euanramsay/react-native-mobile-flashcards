@@ -1,10 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-  View,
-  Text,
-  TouchableOpacity
-} from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { styles } from '../utils/styles'
 
 const Quiz = props => {
@@ -12,7 +8,9 @@ const Quiz = props => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Quiz: {title}</Text>
-      <Text>{props.quizLength} cards</Text>
+      <Text>
+        {questions.length} {questions.length === 1 ? 'card' : 'cards'}
+      </Text>
       <TouchableOpacity
         style={styles.clickable}
         onPress={() =>
@@ -39,8 +37,4 @@ const Quiz = props => {
   )
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  quizLength: state.card[ownProps.navigation.state.params.title].quizLength
-})
-
-export default connect(mapStateToProps)(Quiz)
+export default connect()(Quiz)

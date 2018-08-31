@@ -11,6 +11,7 @@ import Quiz from '../components/Quiz'
 import Home from '../components/Home'
 import Settings from '../components/Settings'
 import CreateQuiz from '../components/CreateQuiz'
+import QuizStart from '../components/QuizStart'
 
 export const Tabs = createBottomTabNavigator(
   {
@@ -82,6 +83,12 @@ export const MainNavigator = createStackNavigator({
     screen: Quiz,
     navigationOptions: {
       title: 'Quiz'
+    }
+  },
+  QuizStart: {
+    screen: QuizStart,
+    navigationOptions: {
+      title: 'QuizStart'
     }
   }
 })

@@ -14,7 +14,7 @@ class Settings extends Component {
           style={styles.clickable}
           onPress={() => navigation.navigate('Notifications')}
         >
-          <Text>Press here for Notifications</Text>
+          <Text>Press here for notifications</Text>
         </TouchableOpacity>
       </View>
     )

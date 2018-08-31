@@ -54,7 +54,7 @@ class NewQuestion extends Component {
           blurOnSubmit
           onChangeText={question => this.setState({ question })}
         />
-        <Text>Please add answer...</Text>
+        <Text>Please add an answer...</Text>
         <TextInput
           style={styles.input}
           blurOnSubmit

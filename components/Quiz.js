@@ -9,8 +9,6 @@ import { styles } from '../utils/styles'
 
 const Quiz = props => {
   const { title, questions } = props.navigation.state.params
-  console.log(props)
-
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Quiz: {title}</Text>

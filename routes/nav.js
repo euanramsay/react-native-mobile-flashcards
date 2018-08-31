@@ -3,62 +3,14 @@ import {
   createBottomTabNavigator,
   createStackNavigator
 } from 'react-navigation'
-import { Text, View, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import Notifications from '../components/Notifications'
 import NewSet from '../components/NewSet'
 import NewQuestion from '../components/NewQuestion'
 import Quiz from '../components/Quiz'
-import { styles } from '../utils/styles'
-
-function Home ({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Mobile Flashcards!</Text>
-      <Ionicons name='ios-albums' size={50} />
-      <TouchableOpacity
-        style={styles.clickable}
-        onPress={() => navigation.navigate('Dashboard')}
-      >
-        <Text>Press here for the Dashboard</Text>
-      </TouchableOpacity>
-    </View>
-  )
-}
-
-function CreateQuiz ({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Create a new Quiz</Text>
-      <TouchableOpacity
-        style={styles.clickable}
-        onPress={() => navigation.navigate('NewSet')}
-      >
-        <Text>Press here to create new quiz</Text>
-      </TouchableOpacity>
-    </View>
-  )
-}
-
-function Settings ({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Settings</Text>
-      <TouchableOpacity
-        style={styles.clickable}
-        onPress={() => navigation.navigate('Notifications')}
-      >
-        <Text>Press here for Notifications</Text>
-      </TouchableOpacity>
-    </View>
-  )
-}
-
-const Dashboard = () => (
-  <View>
-    <Text>This is the Dashboard!</Text>
-  </View>
-)
+import Home from '../components/Home'
+import Settings from '../components/Settings'
+import CreateQuiz from '../components/CreateQuiz'
 
 export const Tabs = createBottomTabNavigator(
   {
@@ -106,12 +58,6 @@ export const MainNavigator = createStackNavigator({
     screen: Tabs,
     navigationOptions: {
       title: 'Home'
-    }
-  },
-  Dashboard: {
-    screen: Dashboard,
-    navigationOptions: {
-      title: 'Dashboard'
     }
   },
   Notifications: {

@@ -34,7 +34,7 @@ class Notifications extends Component {
     const { chosenTime } = this.state
 
     return (
-      <View style={styles.container}>
+      <View>
         <View style={styles.centre}>
           <Text style={styles.heading}>Set a daily reminder</Text>
         </View>

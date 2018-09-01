@@ -19,7 +19,7 @@ class NewSet extends Component {
     if (value.title.length < 1) {
       return Alert.alert(
         'Oh!',
-        'Please put a title for your quiz',
+        'Please put a title for your quiz.',
         [{ text: 'OK' }],
         { cancelable: false }
       )

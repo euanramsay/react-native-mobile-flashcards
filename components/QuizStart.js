@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { styles } from '../utils/styles'
+import { clearLocalNotification } from '../utils/helpers'
 
 class QuizStart extends Component {
   state = {
@@ -24,7 +25,7 @@ class QuizStart extends Component {
                 {questions[questionNumber].answer}
               </Text>
               <TouchableOpacity
-                style={styles.clickable}
+                style={styles.confirm}
                 onPress={() =>
                     this.setState(prevState => ({
                       toggleAnswer: !prevState.toggleAnswer,
@@ -32,7 +33,7 @@ class QuizStart extends Component {
                       questionNumber: prevState.questionNumber + 1
                     }))}
                 >
-                <Text>I was correct!</Text>
+                <Text>Correct</Text>
               </TouchableOpacity>
               <Text>or</Text>
               <TouchableOpacity
@@ -43,7 +44,7 @@ class QuizStart extends Component {
                       questionNumber: prevState.questionNumber + 1
                     }))}
                 >
-                <Text>I was unlucky</Text>
+                <Text>Incorrect</Text>
               </TouchableOpacity>
             </View>
             : <View style={styles.container}>
@@ -59,12 +60,13 @@ class QuizStart extends Component {
                       toggleQuestion: !prevState.toggleQuestion
                     }))}
                 >
-                <Text>See answer</Text>
+                <Text>Show Answer</Text>
               </TouchableOpacity>
             </View>}
         </View>
       )
     } else {
+      clearLocalNotification()
       return (
         <View style={styles.container}>
           <Text style={styles.heading}>
@@ -80,13 +82,13 @@ class QuizStart extends Component {
             style={styles.clickable}
             onPress={() => navigation.navigate('Quiz')}
           >
-            <Text>Try quiz again</Text>
+            <Text>Restart Quiz</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.clickable}
             onPress={() => navigation.navigate('Home')}
           >
-            <Text>Home</Text>
+            <Text>Back to Deck</Text>
           </TouchableOpacity>
         </View>
       )

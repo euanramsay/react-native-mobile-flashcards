@@ -23,12 +23,9 @@ class Notifications extends Component {
 
   render () {
     const displayConfirmNotificationAlert = string => {
-      Alert.alert(
-        'Notifications',
-        `are ${string}`,
-        { text: 'OK' },
-        { cancelable: false }
-      )
+      Alert.alert('Notifications', `are ${string}`, [{ text: 'OK' }], {
+        cancelable: false
+      })
     }
 
     const { chosenTime } = this.state
@@ -45,7 +42,7 @@ class Notifications extends Component {
         />
         <View style={styles.centre}>
           <TouchableOpacity
-            style={styles.clickable}
+            style={styles.confirm}
             onPress={() =>
               clearLocalNotification()
                 .then(setLocalNotification(chosenTime))

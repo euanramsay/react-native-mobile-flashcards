@@ -10,25 +10,24 @@ class Quiz extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.heading}>Quiz: {title}</Text>
-        <Text>
-          {questions.length} {questions.length === 1 ? 'card' : 'cards'}
-        </Text>
-        {questions.length !== 0
-          ? <TouchableOpacity
+        {questions &&
+          <Text>
+            {questions.length} {questions.length === 1 ? 'card' : 'cards'}
+          </Text>}
+        {questions.length !== 0 &&
+          <TouchableOpacity
             style={styles.clickable}
             onPress={() =>
-                navigation.navigate('QuizStart', {
-                  title,
-                  questions
-                })}
-            >
+              navigation.navigate('QuizStart', {
+                title,
+                questions
+              })}
+          >
             <Text>Start quiz</Text>
-          </TouchableOpacity>
-          : null}
+          </TouchableOpacity>}
         <TouchableOpacity
           style={styles.clickable}
-          onPress={() =>
-            navigation.navigate('NewQuestion', { title })}
+          onPress={() => navigation.navigate('NewQuestion', { title })}
         >
           <Text>Add new question</Text>
         </TouchableOpacity>

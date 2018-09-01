@@ -41,7 +41,7 @@ class NewSet extends Component {
           style={styles.clickable}
           onPress={() => this.handleOnPress(this.state)}
         >
-          <Text>Submit</Text>
+          <Text>Create Deck</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     )

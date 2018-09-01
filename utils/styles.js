@@ -18,6 +18,16 @@ export const styles = StyleSheet.create({
   clickable: {
     padding: 10,
     margin: 10,
+    backgroundColor: '#84e8ff',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#d3d3d3',
+    minWidth: 200,
+    alignItems: 'center'
+  },
+  confirm: {
+    padding: 10,
+    margin: 10,
     backgroundColor: '#8cffcd',
     borderRadius: 10,
     borderWidth: 1,

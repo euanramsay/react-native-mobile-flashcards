@@ -7,7 +7,6 @@ class Quiz extends Component {
   render () {
     const { questions, navigation } = this.props
     const { title } = navigation.state.params
-    console.log(this.props)
     return (
       <View style={styles.container}>
         <Text style={styles.heading}>Quiz: {title}</Text>

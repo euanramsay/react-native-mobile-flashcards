@@ -45,7 +45,7 @@ class Notifications extends Component {
         />
         <View style={styles.centre}>
           <TouchableOpacity
-            style={styles.confirm}
+            style={styles.clickable}
             onPress={() =>
               clearLocalNotification()
                 .then(setLocalNotification(chosenTime))

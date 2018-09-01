@@ -25,14 +25,6 @@ export const styles = StyleSheet.create({
     minWidth: 200,
     alignItems: 'center'
   },
-  confirm: {
-    padding: 10,
-    margin: 5,
-    backgroundColor: '#8cffcd',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#d3d3d3'
-  },
   container: {
     flex: 1,
     alignItems: 'center',

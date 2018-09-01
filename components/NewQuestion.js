@@ -16,33 +16,34 @@ class NewQuestion extends Component {
     answer: ''
   }
 
-  handleOnPress = () => {
+  handleOnPress = value => {
     const { question, answer } = this.state
     const { title } = this.props.navigation.state.params
 
-
-    if (question.length < 1) {
+    if (value.question.length < 1) {
       return Alert.alert(
+        'Hey!',
         'You need to put a question.',
-        { text: 'OK' },
+        [{ text: 'OK' }],
         { cancelable: false }
       )
     }
 
-    if (answer.length < 1) {
+    if (value.answer.length < 1) {
       return Alert.alert(
+        'You forgot!',
         'You need to put an answer',
-        { text: 'OK' },
+        [{ text: 'OK' }],
         { cancelable: false }
       )
     }
 
-    const value = {
+    const questionData = {
       title,
       question,
       answer
     }
-    this.props.addNewQuestion(value)
+    this.props.addNewQuestion(questionData)
     this.props.navigation.goBack()
   }
 

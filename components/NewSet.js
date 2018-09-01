@@ -16,10 +16,11 @@ class NewSet extends Component {
   }
 
   handleOnPress = value => {
-    if (this.state.title.length < 1) {
+    if (value.title.length < 1) {
       return Alert.alert(
-        'You need to put a title for your new quiz',
-        { text: 'OK' },
+        'Oh!',
+        'Please put a title for your quiz',
+        [{ text: 'OK' }],
         { cancelable: false }
       )
     }

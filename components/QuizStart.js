@@ -10,21 +10,16 @@ class QuizStart extends Component {
     toggleAnswer: false
   }
 
-  // TODO: Implement answering of questions and scoring.
-
   render () {
-    const { questions } = this.props.navigation.state.params
     const { navigation } = this.props
+    const { questions } = navigation.state.params
     const { questionNumber, toggleAnswer, score } = this.state
-    console.log(this.state)
-    console.log(questions.length)
-    console.log(navigation)
     if (questionNumber < questions.length) {
       return (
         <View style={styles.container}>
           {toggleAnswer
-            ? <View>
-              <Text>Answer</Text>
+            ? <View style={styles.container}>
+              <Text>The answer is:</Text>
               <Text style={styles.heading}>
                 {questions[questionNumber].answer}
               </Text>
@@ -37,8 +32,9 @@ class QuizStart extends Component {
                       questionNumber: prevState.questionNumber + 1
                     }))}
                 >
-                <Text>Correct?</Text>
+                <Text>I was correct!</Text>
               </TouchableOpacity>
+              <Text>or</Text>
               <TouchableOpacity
                 style={styles.cancel}
                 onPress={() =>
@@ -47,10 +43,11 @@ class QuizStart extends Component {
                       questionNumber: prevState.questionNumber + 1
                     }))}
                 >
-                <Text>Unlucky?</Text>
+                <Text>I was unlucky</Text>
               </TouchableOpacity>
             </View>
-            : <View>
+            : <View style={styles.container}>
+              <Text>The question is:</Text>
               <Text style={styles.heading}>
                 {questions[questionNumber].question}
               </Text>
@@ -62,7 +59,7 @@ class QuizStart extends Component {
                       toggleQuestion: !prevState.toggleQuestion
                     }))}
                 >
-                <Text>Answer</Text>
+                <Text>See answer</Text>
               </TouchableOpacity>
             </View>}
         </View>
@@ -71,7 +68,13 @@ class QuizStart extends Component {
       return (
         <View style={styles.container}>
           <Text style={styles.heading}>
-            You have finished the quiz with a score of {score}
+            You have finished the quiz with a score of
+            {' '}
+            {score}
+            {' '}
+            out of
+            {' '}
+            {questions.length}!
           </Text>
           <TouchableOpacity
             style={styles.clickable}
